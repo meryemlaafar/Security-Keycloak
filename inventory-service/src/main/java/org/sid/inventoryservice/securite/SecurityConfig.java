@@ -29,8 +29,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(ar -> ar
                         .requestMatchers("/h2-console/**").permitAll()
                 )
-                .authorizeHttpRequests(ar -> ar
-                        .requestMatchers("/api/products/**").hasAuthority("ADMIN"))
+                //.authorizeHttpRequests(ar -> ar
+                        //.requestMatchers("/api/products/**").hasAuthority("ADMIN"))
                 //désactiver la protection contre les frames
                 //l'ordre n'est pas important
                 .headers(headers -> headers

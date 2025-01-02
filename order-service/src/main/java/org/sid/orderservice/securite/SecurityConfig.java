@@ -27,10 +27,10 @@ public class SecurityConfig {
         return httpSecurity
                 //autoriser les requêtes HTTP sur les URL commençant par /api/** sans authentification
                 .authorizeHttpRequests(ar -> ar
-                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/h2-console/**","/swagger-ui.html","/v3/**","/swagger-ui/**","/api/orders/**").permitAll()
                 )
-                .authorizeHttpRequests(ar -> ar
-                        .requestMatchers("/api/orders/**").hasAuthority("ADMIN"))
+                /*.authorizeHttpRequests(ar -> ar
+                        .requestMatchers("/api/orders/**").hasAuthority("ADMIN"))*/
                 //désactiver la protection contre les frames
                 //l'ordre n'est pas important
                 .headers(headers -> headers

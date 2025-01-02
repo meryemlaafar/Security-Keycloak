@@ -7,6 +7,7 @@ import { ProductsComponent } from './ui/products/products.component';
 import { CustomersComponent } from './ui/customers/customers.component';
 import {HttpClientModule} from '@angular/common/http';
 import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
+import { OrdersComponent } from './ui/orders/orders.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -29,6 +30,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     AppComponent,
     ProductsComponent,
     CustomersComponent,
+    OrdersComponent,
 
   ],
   imports: [
