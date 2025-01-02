@@ -24,4 +24,8 @@ export class OrdersComponent implements OnInit{
       }
     })
   }
+
+  getOrderDetails(o: any) {
+    this.router.navigateByUrl("/order-details/"+o.id);
+  }
 }
