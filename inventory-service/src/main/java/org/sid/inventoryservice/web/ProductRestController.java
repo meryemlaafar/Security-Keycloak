@@ -2,32 +2,40 @@ package org.sid.inventoryservice.web;
 
 import org.sid.inventoryservice.entities.Product;
 import org.sid.inventoryservice.repositories.ProductRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-//j'autorise tout les domaine d'envoyer des requetes vers mon microservice
-//@CrossOrigin("*")
 public class ProductRestController {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductRestController(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
     @GetMapping("/products")
-    public List<Product> productList(){
+    public List<Product> productList() {
         return productRepository.findAll();
     }
+
     @GetMapping("/products/{id}")
-    public Product getProduct(@PathVariable String id){
-        return productRepository.findById(id).get();
+    public ResponseEntity<Product> getProduct(@PathVariable String id) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            return ResponseEntity.ok(product.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
+
     @GetMapping("/auth")
-    public Authentication authentication(Authentication authentication){
+    public Authentication authentication(Authentication authentication) {
         return authentication;
     }
 }

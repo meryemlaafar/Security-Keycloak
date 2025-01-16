@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.UUID;
 
 @SpringBootApplication
-@EnableFeignClients //pour activer les clients feign "inventory restclient"
+@EnableFeignClients
 public class OrderServiceApplication {
 
 	public static void main(String[] args) {
@@ -32,8 +32,7 @@ public class OrderServiceApplication {
 			InventoryRestClient inventoryRestClient
 	){
 		return args -> {
-			//List<Product> allProducts = inventoryRestClient.getAllProducts();
-			List<String> productsIds = List.of("P01","P02","P03");
+			List<String> productsIds = List.of("1","2","3","4");
 			for (int i = 0; i < 5; i++) {
 				Order order = Order.builder()
 						.id(UUID.randomUUID().toString())

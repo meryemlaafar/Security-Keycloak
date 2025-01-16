@@ -20,7 +20,6 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter=new JwtGrantedAuthoritiesConverter();
     @Override
     public AbstractAuthenticationToken convert(Jwt jwt) {
-        //on va concatener les roles jwtGrantedAuthoritiesConverter, et les roles de la ressource
         Collection<GrantedAuthority> authorities = Stream.concat(
                 jwtGrantedAuthoritiesConverter.convert(jwt).stream(),
                 extractResourceRoles(jwt).stream()
@@ -30,7 +29,6 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
     private Collection<GrantedAuthority> extractResourceRoles(Jwt jwt) {
         Map<String , Object> realmAccess;
         Collection<String> roles;
-        //s'adapte en fonction du provider
         if(jwt.getClaim("realm_access")==null){
             return Set.of();
         }

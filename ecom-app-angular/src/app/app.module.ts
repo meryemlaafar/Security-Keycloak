@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
 import { OrdersComponent } from './ui/orders/orders.component';
 import { OrderDetailsComponent } from './ui/order-details/order-details.component';
+import {RouterModule, Routes} from '@angular/router';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -25,7 +26,13 @@ function initializeKeycloak(keycloak: KeycloakService) {
       }
     });
 }
-
+// Définissez vos routes ici
+const routes: Routes = [
+  { path: 'products', component: ProductsComponent },
+  { path: 'orders', component: OrdersComponent },
+  { path: 'customers', component: CustomersComponent },
+  // Ajoutez d'autres routes si nécessaire
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +44,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     AppRoutingModule,
     HttpClientModule,
     KeycloakAngularModule

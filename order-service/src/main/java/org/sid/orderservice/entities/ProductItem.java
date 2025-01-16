@@ -13,7 +13,6 @@ public class ProductItem {
     private String productId;
     private double price;
     private int quantity;
-    //bricoler une solution pour eviter boucle infinie et tu igonre cet attribut et la vrai solution c'est passe via dto
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Order order;

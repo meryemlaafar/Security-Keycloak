@@ -12,12 +12,11 @@ import {ActivatedRoute} from '@angular/router';
 export class OrderDetailsComponent implements OnInit{
   orderId : string;
   orderDetails : any;
-  //j'ai besoin de recuperer id a l'aide de activated route
   constructor(private route : ActivatedRoute, private http : HttpClient) {
     this.orderId = this.route.snapshot.params['id'];
   }
   ngOnInit() {
-    this.http.get("http://localhost:8082/api/orders/"+this.orderId).subscribe({
+    this.http.get("http://localhost:8088/api/orders/"+this.orderId).subscribe({
       next : order => {
         this.orderDetails = order
       },

@@ -8,9 +8,9 @@ import {OrderDetailsComponent} from './ui/order-details/order-details.component'
 
 const routes: Routes = [
   {path:"products",component:ProductsComponent,canActivate:[AuthGuard],data:{roles:['ADMIN']}},
-  {path:"customers",component:CustomersComponent,canActivate:[AuthGuard],data:{roles:['USER']}},
-  {path:"orders",component:OrdersComponent,canActivate:[AuthGuard],data:{roles:['USER']}},
-  {path:"order-details/:id",component:OrderDetailsComponent,canActivate:[AuthGuard],data:{roles:['USER']}},
+  {path:"customers",component:CustomersComponent,canActivate:[AuthGuard],data:{roles:['ADMIN']}},
+  {path:"orders",component:OrdersComponent,canActivate:[AuthGuard],data:{roles:['ADMIN']}},
+  {path:"order-details/:id",component:OrderDetailsComponent,canActivate:[AuthGuard],data:{roles:['ADMIN']}},
 ];
 
 @NgModule({

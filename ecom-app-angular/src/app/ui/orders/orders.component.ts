@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit{
   constructor(private http : HttpClient, private router : Router) {
   }
   ngOnInit() {
-    this.http.get("http://localhost:8082/api/orders").subscribe({
+    this.http.get("http://localhost:8088/api/orders").subscribe({
       next : orders => {
         this.orders = orders;
       },
